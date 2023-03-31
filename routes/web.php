@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/movie/{id}', function () {
     return view('movie');
 });
+
+Route::get('/login', function () {
+    return view('sessions.create');
+});
