@@ -6,16 +6,16 @@
             <h4 class='mb-5 text-white border-b w-1/2'>Navigate</h4>
             <ul class='text-white text-sm flex flex-col gap-2'>
                 <li>
-                    <a href='/admin/movies' class="{{request()->is('admin/movies') ? 'text-blue-300' : ''}}">Movies</a>
+                    <a href="{{ route('admin.movies.index') }}" class="{{ request()->url() == route('admin.movies.index') ? 'text-blue-300' : '' }}">Movies</a>
                 </li>
                 <li>
-                    <a href='/admin/quotes' class="{{request()->is('admin/quotes') ? 'text-blue-300' : ''}}">Quotes</a>
+                    <a href="{{ route('admin.quotes.index') }}" class="{{ request()->url() == route('admin.quotes.index') ? 'text-blue-300' : '' }}">Quotes</a>
                 </li>
                 <li>
-                    <a href='/admin/quotes/create' class="{{request()->is('admin/quotes/create') ? 'text-blue-300' : ''}}">New Quote</a>
+                    <a href="{{ route('admin.quotes.create') }}" class="{{ request()->url() == route('admin.quotes.create') ? 'text-blue-300' : '' }}">New Quote</a>
                 </li>
                 <li>
-                    <a href='/admin/movies/create' class="{{request()->is('admin/movies/create') ? 'text-blue-300' : ''}}">New Movie</a>
+                    <a href="{{ route('admin.movies.create') }}" class="{{ request()->url() == route('admin.movies.create') ? 'text-blue-300' : '' }}">New Movie</a>
                 </li>
             </ul>
         </aside>
