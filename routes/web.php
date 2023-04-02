@@ -18,23 +18,14 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/movie/{id}', function () {
-    return view('movie');
-});
+Route::view('/movie/{id}', 'movie')->name('movie');
 
-Route::get('/login', function () {
-    return view('sessions.create');
-});
+Route::view('/login', 'sessions.create')->name('login');
 
-Route::get('/admin/quotes/create', function () {
-    return view('admin.quotes.create');
-});
-Route::get('/admin/movies/create', function () {
-    return view('admin.movies.create');
-});
-Route::get('/admin/quotes', function () {
-    return view('admin.quotes.index');
-});
-Route::get('/admin/movies', function () {
-    return view('admin.movies.index');
-});
+Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create');
+
+Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create');
+
+Route::view('/admin/quotes', 'admin.quotes.index')->name('admin.quotes.index');
+
+Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index');
