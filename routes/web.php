@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 // "quote" => Quote::inRandomOrder()->first()
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('landing');
 
 Route::view('/movie/{id}', 'movie')->name('movie');
 
