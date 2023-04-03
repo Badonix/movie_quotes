@@ -27,4 +27,9 @@ class SessionController extends Controller
 
         return redirect()->route('admin.quotes.create');
     }
+    public function destroy()
+    {
+        auth()->logout();
+        return redirect()->route('landing');
+    }
 }
