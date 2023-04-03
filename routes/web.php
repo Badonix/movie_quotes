@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\Quote;
+use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('landing');
 
-Route::view('/movie/{id}', 'movie')->name('movie');
+Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movie');
 
 Route::view('/login', 'sessions.create')->name('login');
 
