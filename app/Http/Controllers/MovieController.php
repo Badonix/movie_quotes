@@ -9,8 +9,10 @@ class MovieController extends Controller
 {
     public function show($id)
     {
+        $movie = Movie::with('quotes')->find($id);
+
         return view('movie', [
-            'quotes' => Movie::find($id)->quotes
+            'movie' => $movie,
         ]);
     }
 }
