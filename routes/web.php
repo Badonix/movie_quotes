@@ -4,6 +4,7 @@ use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,8 @@ Route::get('/', [HomeController::class, 'index'])->name('landing');
 
 Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movie');
 
-Route::view('/login', 'sessions.create')->name('login');
+Route::get('/login', [SessionController::class, 'create'])->name('login');
+Route::post('/login', [SessionController::class, 'store']);
 
 Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create');
 
