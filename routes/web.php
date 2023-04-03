@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Quote;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// "quote" => Quote::inRandomOrder()->first()
 
-Route::view('/', 'landing')->name('landing');
+Route::get('/', [HomeController::class, 'index'])->name('landing');
 
 Route::view('/movie/{id}', 'movie')->name('movie');
 
