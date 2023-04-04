@@ -8,6 +8,9 @@
             @csrf 
             <x-input name='username'/>
             <x-input name='password' type='password'/>
+            @error('wrong')
+                <p class='text-red-600'>{{$message}}</p>
+            @enderror
             <button class='py-2 px-4 border border-gray-600 bg-slate-50 text-gray-700 font-semibold rounded-sm mt-6 hover:bg-slate-100' type='submit'>Log in</button>
         </form>
     </div>    
