@@ -22,16 +22,15 @@ Route::get('/', [HomeController::class, 'index'])->name('landing');
 
 Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movie');
 
-Route::get('/login', [SessionController::class, 'create'])->name('login')->middleware('guest');
-;
-Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login', [SessionController::class, 'create'])->name('login');
+    Route::post('/login', [SessionController::class, 'store']);
+});
 
-Route::get('/logout', [SessionController::class, 'destroy'])->middleware("auth");
-
-Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create')->middleware('auth');
-
-Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create')->middleware('auth');
-
-Route::view('/admin/quotes', 'admin.quotes.index')->name('admin.quotes.index')->middleware('auth');
-
-Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index')->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/logout', [SessionController::class, 'destroy'])->name('logout');
+    Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create');
+    Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create');
+    Route::view('/admin/quotes', 'admin.quotes.index')->name('admin.quotes.index');
+    Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index');
+});

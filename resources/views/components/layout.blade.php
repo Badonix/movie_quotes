@@ -17,7 +17,7 @@
                 @else
                 <a href='{{route("landing")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>Home</a>
                 @endif
-                <a href='/logout' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>Logout</a>
+                <a href='{{route("logout")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>Logout</a>
             </div>
         </div>
     @endauth
