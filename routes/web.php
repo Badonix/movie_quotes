@@ -23,8 +23,10 @@ Route::get('/', [HomeController::class, 'index'])->name('landing');
 Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movie');
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/login', [SessionController::class, 'create'])->name('login');
-    Route::post('/login', [SessionController::class, 'store']);
+    Route::controller(SessionController::class)->group(function () {
+        Route::get('/login', 'create')->name('login');
+        Route::post('/login', 'store');
+    });
 });
 
 Route::group(['middleware' => 'auth'], function () {
