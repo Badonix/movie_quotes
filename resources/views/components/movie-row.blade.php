@@ -2,7 +2,7 @@
     <p>1</p>
     <a href='#'>The son of the soldier</a>
     <div class='flex items-center gap-3'>
-        <a href='#'>Edit</a>
-        <a href='#'>Delete</a>
+        <a href='#'>{{__('setting.edit')}}</a>
+        <a href='#'>{{__('setting.delete')}}</a>
     </div>
 </div>

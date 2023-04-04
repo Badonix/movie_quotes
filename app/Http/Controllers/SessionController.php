@@ -21,7 +21,7 @@ class SessionController extends Controller
 
         if (!auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
-                'wrong' => "Credentials could't be verified"
+                'wrong' => __('auth.wrong')
             ]);
         }
 
