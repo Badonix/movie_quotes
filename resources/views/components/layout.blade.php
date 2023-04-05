@@ -11,26 +11,32 @@
 <body>
     <x-langs/>
     @auth
-        <div class='absolute top-3 w-full flex justify-end px-7 py-1'>
-            <div>
-                @if(request()->route()->named('movie') || request()->route()->named('landing'))
+    <div class='absolute top-3 w-full flex justify-end px-7 py-1'>
+        <div>
+            @if(!request()->route()->named('landing'))
+                <a href='{{route("landing")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>{{__('navbar.home')}}</a>
+            @endif
+            @if(request()->route()->named('movie') || request()->route()->named('landing'))
                 <a href='{{route("admin.quotes.create")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>{{__('navbar.dashboard')}}</a>
-                @else
-                <a href='{{route("landing")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>{{__('navbar.home')}}</a>
-                @endif
-                <a href='{{route("logout")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>{{__("navbar.logout")}}</a>
-            </div>
+            @endif
+            <a href='{{route("logout")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>{{__("navbar.logout")}}</a>
         </div>
-    @endauth
-    @guest
-        <div class='absolute top-3 w-full flex justify-end px-7 py-1'>
-            @if(request()->route()->named('login'))
+    </div>
+@endauth
+
+@guest
+    <div class='absolute top-3 w-full flex justify-end px-7 py-1'>
+        <div>
+            @if(!request()->route()->named('landing'))
                 <a href='{{route("landing")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>{{__('navbar.home')}}</a>
-            @else
+            @endif
+            @if(!request()->route()->named('login'))
                 <a href='{{route("login")}}' class='text-white border px-4 py-1 hover:text-black hover:bg-white transition'>{{__('navbar.login')}}</a>
             @endif
         </div>
-    @endguest
+    </div>
+@endguest
+
    {{$slot}}
 </body>
 </html>

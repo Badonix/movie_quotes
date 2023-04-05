@@ -1,7 +1,8 @@
 <x-layout>
   <x-setting name='new_quote'>
     <form class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
-        <x-input name='quote'/>
+        <x-input name='quote_en'/>
+        <x-input name='quote_ka'/>
         <x-input name='image' type='file'/>
         <div class='flex flex-col gap-1'>
             <label for='movie'>{{__('labels.movie')}}</label>
