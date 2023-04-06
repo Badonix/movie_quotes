@@ -8,7 +8,7 @@
         <a href='#'>{{$quote->movie->name}}</a>
     </div>
     <div class='flex items-center gap-3'>
-        <a href='#'>{{__('setting.edit')}}</a>
+        <a href='/admin/edit/quote/{{$quote->id}}'>{{__('setting.edit')}}</a>
         <form action='/admin/quotes/{{$quote->id}}' method="POST">
             @csrf
             @method("DELETE")

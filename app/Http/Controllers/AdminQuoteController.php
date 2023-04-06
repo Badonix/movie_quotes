@@ -47,4 +47,36 @@ class AdminQuoteController extends Controller
         $quote->delete();
         return back();
     }
+
+    public function edit(Quote $quote)
+    {
+        return view('admin.quotes.edit', [
+            "quote" => $quote
+        ]);
+    }
+
+    public function update(Quote $quote)
+    {
+        $inputData = request()->validate([
+            'quote_en' => 'required',
+            'quote_ka' => 'required',
+            'image' => 'image',
+            'movie' => 'required'
+        ]);
+
+        $attributes = [
+            "movie_id" => $inputData["movie"],
+            "body" => [
+                'en' => $inputData['quote_en'],
+                'ka' => $inputData['quote_ka'],
+            ],
+        ];
+        if (isset($inputData['image'])) {
+            $attributes['image_url'] = request()->file('image')->store('images');
+        }
+
+        $quote->update($attributes);
+
+        return redirect('/');
+    }
 }

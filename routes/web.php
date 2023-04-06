@@ -40,7 +40,9 @@ Route::middleware('localization')->group(function () {
         Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create');
         Route::get('/admin/quotes', [AdminQuoteController::class, 'index'])->name('admin.quotes.index');
         Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index');
+        Route::get('/admin/edit/quote/{quote}', [AdminQuoteController::class, 'edit'])->name('quote.edit');
 
+        Route::patch('/admin/edit/quote/{quote}', [AdminQuoteController::class, 'update']);
         Route::post('/admin/quotes/create', [AdminQuoteController::class, 'store']);
         Route::delete('/admin/quotes/{quote}', [AdminQuoteController::class, 'destroy']);
     });
