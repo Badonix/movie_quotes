@@ -14,7 +14,7 @@ return new class () extends Migration {
             $table->id();
             $table->foreignId("movie_id");
             $table->foreignId("user_id");
-            $table->text('body');
+            $table->json('body');
             $table->string("image_url");
             $table->timestamps();
         });
