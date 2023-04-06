@@ -8,6 +8,13 @@ use Illuminate\Validation\Rule;
 
 class AdminQuoteController extends Controller
 {
+    public function index()
+    {
+        return view('admin.quotes.index', [
+            'quotes' => Quote::all()
+        ]);
+    }
+
     public function store()
     {
         $inputData = request()->validate([

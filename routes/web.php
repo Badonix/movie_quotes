@@ -38,7 +38,7 @@ Route::middleware('localization')->group(function () {
         Route::get('/logout', [SessionController::class, 'destroy'])->name('logout');
         Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create');
         Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create');
-        Route::view('/admin/quotes', 'admin.quotes.index')->name('admin.quotes.index');
+        Route::get('/admin/quotes', [AdminQuoteController::class, 'index'])->name('admin.quotes.index');
         Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index');
 
         Route::post('/admin/quotes/create', [AdminQuoteController::class, 'store']);
