@@ -42,6 +42,7 @@ Route::middleware('localization')->group(function () {
         Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index');
 
         Route::post('/admin/quotes/create', [AdminQuoteController::class, 'store']);
+        Route::delete('/admin/quotes/{quote}', [AdminQuoteController::class, 'destroy']);
     });
 });
 

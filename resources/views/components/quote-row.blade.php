@@ -9,6 +9,10 @@
     </div>
     <div class='flex items-center gap-3'>
         <a href='#'>{{__('setting.edit')}}</a>
-        <a href='#'>{{__('setting.delete')}}</a>
+        <form action='/admin/quotes/{{$quote->id}}' method="POST">
+            @csrf
+            @method("DELETE")
+            <button type='submit'>{{__('setting.delete')}}</button>
+        </form>
     </div>
 </div>

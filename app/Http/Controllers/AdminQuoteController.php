@@ -41,4 +41,10 @@ class AdminQuoteController extends Controller
 
         return redirect('/');
     }
+
+    public function destroy(Quote $quote)
+    {
+        $quote->delete();
+        return back();
+    }
 }
