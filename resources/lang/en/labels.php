@@ -8,4 +8,5 @@ return [
     'image' => "Image",
     'movie_ka' => "Movie (Georgian)",
     'movie_en' => "Movie (English)",
+    'movie' => "Movie"
 ];
