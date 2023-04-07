@@ -17,17 +17,9 @@ class AdminQuoteController extends Controller
 
     public function store(CreateQuoteRequest $request)
     {
-        $attributes = [
-            "image_url" => $request->file('image')->store('images'),
-            "movie_id" => $request->input('movie'),
-            "body" => [
-                'en' => $request->input('quote_en'),
-                'ka' => $request->input('quote_ka'),
-            ],
-            "user_id" => auth()->id(),
-        ];
-
-
+        $attributes = $request->validated();
+        $attributes['user_id'] = auth()->user()->id;
+        $attributes['image_url'] = request()->file('image_url')->store('images');
         Quote::create($attributes);
 
         return redirect('/');
@@ -48,15 +40,10 @@ class AdminQuoteController extends Controller
 
     public function update(UpdateQuoteRequest $request, Quote $quote)
     {
-        $attributes = [
-            "movie_id" => $request->input("movie"),
-            "body" => [
-                'en' => $request->input('quote_en'),
-                'ka' => $request->input('quote_ka'),
-            ],
-        ];
-        if (isset($inputData['image'])) {
-            $attributes['image_url'] = request()->file('image')->store('images');
+        $attributes = $request->validated();
+
+        if (isset($attributes['image_url'])) {
+            $attributes['image_url'] = request()->file('image_url')->store('images');
         }
 
         $quote->update($attributes);

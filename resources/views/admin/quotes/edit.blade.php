@@ -3,16 +3,16 @@
     <form method="POST" action="/admin/edit/quote/{{$quote->id}}" enctype="multipart/form-data" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
         @csrf
         @method('PATCH')
-        <x-input name='quote_en' value="{{$quote->getTranslations('body')['en']}}"/>
-        <x-input name='quote_ka' value="{{$quote->getTranslations('body')['ka']}}"/>
+        <x-input form_name='quote_en' name='body[en]' value="{{$quote->getTranslations('body')['en']}}"/>
+        <x-input form_name='quote_ka' name='body[ka]' value="{{$quote->getTranslations('body')['ka']}}"/>
         
         <div class='flex gap-2'>
-            <x-input name='image' type='file'/>
+            <x-input form_name="image" name='image_url' type='file'/>
             <img src='{{asset("/storage/".$quote->image_url)}}' class='w-1/6 object-cover'/>
         </div>
         <div class='flex flex-col gap-1'>
             <label for='movie'>{{__('labels.movie')}}</label>
-            <select name='movie' class='p-1' id='movie'>
+            <select name='movie_id' class='p-1' id='movie'>
                 <option value='1'>Movie</option>
                 <option value='2'>Movie</option>
                 <option value='3'>Movie</option>
