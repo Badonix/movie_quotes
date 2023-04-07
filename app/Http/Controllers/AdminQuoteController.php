@@ -2,38 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateQuoteRequest;
+use App\Http\Requests\UpdateQuoteRequest;
 use App\Models\Quote;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class AdminQuoteController extends Controller
 {
     public function index()
     {
         return view('admin.quotes.index', [
-            'quotes' => Quote::all()
+            'quotes' => Quote::latest()->get()
         ]);
     }
 
-    public function store()
+    public function store(CreateQuoteRequest $request)
     {
-        $inputData = request()->validate([
-            'quote_en' => "required",
-            'quote_ka' => "required",
-            'image' => "required",
-            'movie' => ['required', Rule::exists('movies', 'id')],
-        ]);
-
-
         $attributes = [
-            "image_url" => $inputData["image"],
-            "movie_id" => $inputData["movie"],
+            "image_url" => $request->file('image')->store('images'),
+            "movie_id" => $request->input('movie'),
             "body" => [
-                'en' => $inputData['quote_en'],
-                'ka' => $inputData['quote_ka'],
+                'en' => $request->input('quote_en'),
+                'ka' => $request->input('quote_ka'),
             ],
             "user_id" => auth()->id(),
-            'image_url' => request()->file('image')->store('images')
         ];
 
 
@@ -55,20 +46,13 @@ class AdminQuoteController extends Controller
         ]);
     }
 
-    public function update(Quote $quote)
+    public function update(UpdateQuoteRequest $request, Quote $quote)
     {
-        $inputData = request()->validate([
-            'quote_en' => 'required',
-            'quote_ka' => 'required',
-            'image' => 'image',
-            'movie' => 'required'
-        ]);
-
         $attributes = [
-            "movie_id" => $inputData["movie"],
+            "movie_id" => $request->input("movie"),
             "body" => [
-                'en' => $inputData['quote_en'],
-                'ka' => $inputData['quote_ka'],
+                'en' => $request->input('quote_en'),
+                'ka' => $request->input('quote_ka'),
             ],
         ];
         if (isset($inputData['image'])) {
