@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminQuoteController;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -23,7 +24,6 @@ use Illuminate\Support\Facades\App;
 
 Route::middleware('localization')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('landing');
-
     Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movie');
 
     Route::group(['middleware' => 'guest'], function () {
@@ -37,8 +37,17 @@ Route::middleware('localization')->group(function () {
         Route::get('/logout', [SessionController::class, 'destroy'])->name('logout');
         Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create');
         Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create');
-        Route::view('/admin/quotes', 'admin.quotes.index')->name('admin.quotes.index');
         Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index');
+
+        Route::controller(AdminQuoteController::class)->group(
+            function () {
+                Route::get('/admin/quotes', 'index')->name('admin.quotes.index');
+                Route::get('/admin/edit/quote/{quote}', 'edit')->name('quote.edit');
+                Route::patch('/admin/edit/quote/{quote}', 'update');
+                Route::post('/admin/quotes/create', 'store');
+                Route::delete('/admin/quotes/{quote}', 'destroy');
+            }
+        );
     });
 });
 

@@ -8,5 +8,7 @@ return [
     "navigate"=>"Navigate",
     "add"=>"Add",
     'edit' => "Edit",
-    'delete' => "Delete"
+    'delete' => "Delete",
+    "edit_quote"=>"Edit Quote",
+    'edit' => "Edit"
 ];

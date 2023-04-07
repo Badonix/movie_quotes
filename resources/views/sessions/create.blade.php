@@ -6,8 +6,8 @@
         <h1 class='text-center font-bold text-2xl text-gray-700'>{{__('auth.login')}}</h1>
         <form method='POST' action='/login' class='mt-5 flex flex-col'>
             @csrf 
-            <x-input name='username'/>
-            <x-input name='password' type='password'/>
+            <x-input form_name='username' name='username'/>
+            <x-input form_name='password' name='password' type='password'/>
             @error('wrong')
                 <p class='text-red-600'>{{$message}}</p>
             @enderror
