@@ -53,6 +53,7 @@ Route::middleware('localization')->group(function () {
             function () {
                 Route::post("/admin/movies/create", 'store');
                 Route::get('/admin/movies', 'index')->name('admin.movies.index');
+                Route::delete("/admin/movies/{movie}", 'destroy');
             }
         );
     });

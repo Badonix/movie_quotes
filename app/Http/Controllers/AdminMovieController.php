@@ -23,4 +23,10 @@ class AdminMovieController extends Controller
             'movies' => Movie::latest()->get()
         ]);
     }
+
+    public function destroy(Movie $movie)
+    {
+        $movie->delete();
+        return redirect('/');
+    }
 }
