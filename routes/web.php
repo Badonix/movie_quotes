@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AdminMovieController;
+use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\App;
 
 /*
@@ -36,7 +37,7 @@ Route::middleware('localization')->group(function () {
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/logout', [SessionController::class, 'destroy'])->name('logout');
-        Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create');
+        Route::get('/admin/quotes/create', [QuoteController::class, 'create'])->name('admin.quotes.create');
         Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create');
 
         Route::controller(AdminQuoteController::class)->group(
