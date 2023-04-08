@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\AdminMovieController;
 use Illuminate\Support\Facades\App;
 
 /*
@@ -46,6 +47,12 @@ Route::middleware('localization')->group(function () {
                 Route::patch('/admin/edit/quote/{quote}', 'update');
                 Route::post('/admin/quotes/create', 'store');
                 Route::delete('/admin/quotes/{quote}', 'destroy');
+            }
+        );
+
+        Route::controller(AdminMovieController::class)->group(
+            function () {
+                Route::post("/admin/movies/create", 'store');
             }
         );
     });
