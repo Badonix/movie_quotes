@@ -10,7 +10,7 @@ class QuoteController extends Controller
     public function create()
     {
         return view('admin.quotes.create', [
-            'movies'=> Movie::all()
+            'movies'=> Movie::latest()->get()
         ]);
     }
 }
