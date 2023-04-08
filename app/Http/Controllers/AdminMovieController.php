@@ -16,4 +16,11 @@ class AdminMovieController extends Controller
 
         return redirect('/');
     }
+
+    public function index()
+    {
+        return view('admin.movies.index', [
+            'movies' => Movie::latest()->get()
+        ]);
+    }
 }

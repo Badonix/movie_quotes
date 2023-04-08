@@ -38,7 +38,6 @@ Route::middleware('localization')->group(function () {
         Route::get('/logout', [SessionController::class, 'destroy'])->name('logout');
         Route::view('/admin/quotes/create', 'admin.quotes.create')->name('admin.quotes.create');
         Route::view('/admin/movies/create', 'admin.movies.create')->name('admin.movies.create');
-        Route::view('/admin/movies', 'admin.movies.index')->name('admin.movies.index');
 
         Route::controller(AdminQuoteController::class)->group(
             function () {
@@ -53,6 +52,7 @@ Route::middleware('localization')->group(function () {
         Route::controller(AdminMovieController::class)->group(
             function () {
                 Route::post("/admin/movies/create", 'store');
+                Route::get('/admin/movies', 'index')->name('admin.movies.index');
             }
         );
     });
