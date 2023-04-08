@@ -51,8 +51,10 @@ Route::middleware('localization')->group(function () {
 
         Route::controller(AdminMovieController::class)->group(
             function () {
-                Route::post("/admin/movies/create", 'store');
                 Route::get('/admin/movies', 'index')->name('admin.movies.index');
+                Route::get('/admin/edit/movie/{movie}', 'edit')->name("movie.edit");
+                Route::patch('/admin/edit/movie/{movie}', 'update');
+                Route::post("/admin/movies/create", 'store');
                 Route::delete("/admin/movies/{movie}", 'destroy');
             }
         );

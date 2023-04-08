@@ -10,5 +10,6 @@ return [
     'edit' => "Edit",
     'delete' => "Delete",
     "edit_quote"=>"Edit Quote",
-    'edit' => "Edit"
+    'edit' => "Edit",
+    'edit_movie' =>"Edit Movie"
 ];
