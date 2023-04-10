@@ -21,4 +21,11 @@ class CreateQuoteRequest extends FormRequest
             'movie_id' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'image_url.image' => __('validation.image_type'),
+        ];
+    }
 }
