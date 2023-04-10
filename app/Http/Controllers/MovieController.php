@@ -9,7 +9,9 @@ class MovieController extends Controller
 {
     public function show($id)
     {
-        $movie = Movie::with('quotes')->find($id);
+        $movie = Movie::with(['quotes' => function ($query) {
+            $query->latest();
+        }])->find($id);
 
         return view('movie', [
             'movie' => $movie,

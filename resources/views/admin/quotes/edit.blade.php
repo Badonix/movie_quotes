@@ -13,10 +13,9 @@
         <div class='flex flex-col gap-1'>
             <label for='movie'>{{__('labels.movie')}}</label>
             <select name='movie_id' class='p-1' id='movie'>
-                <option value='1'>Movie</option>
-                <option value='2'>Movie</option>
-                <option value='3'>Movie</option>
-                <option value='4'>Movie</option>
+              @foreach($movies as $movie)
+                <option {{$movie->id == $quote->movie_id ? "selected" : ""}} value='{{$movie->id}}'>{{$movie->name}}</option>
+              @endforeach
             </select>
         </div>
         <button class='border p-1 mt-3 hover:bg-slate-100' type='submit'>{{__('setting.edit')}}</button>

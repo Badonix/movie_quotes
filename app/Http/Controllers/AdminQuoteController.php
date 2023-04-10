@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateQuoteRequest;
 use App\Http\Requests\UpdateQuoteRequest;
+use App\Models\Movie;
 use App\Models\Quote;
 
 class AdminQuoteController extends Controller
@@ -34,7 +35,8 @@ class AdminQuoteController extends Controller
     public function edit(Quote $quote)
     {
         return view('admin.quotes.edit', [
-            "quote" => $quote
+            "quote" => $quote,
+            'movies' => Movie::all()
         ]);
     }
 
