@@ -1,6 +1,6 @@
 <x-layout>
   <x-setting name='new_movie'>
-    <form action="/admin/movies/create" method="POST" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
+    <form action="{{route('movie.store')}}" method="POST" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
         @csrf
         <x-input name='name[ka]' form_name='movie_ka'/>
         <x-input name='name[en]' form_name='movie_en'/>

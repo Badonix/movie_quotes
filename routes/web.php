@@ -50,15 +50,13 @@ Route::middleware('localization')->group(function () {
             }
         );
 
-        Route::controller(AdminMovieController::class)->group(
-            function () {
-                Route::get('/admin/movies', 'index')->name('admin.movies.index');
-                Route::get('/admin/edit/movie/{movie}', 'edit')->name("movie.edit");
-                Route::patch('/admin/edit/movie/{movie}', 'update');
-                Route::post("/admin/movies/create", 'store');
-                Route::delete("/admin/movies/{movie}", 'destroy');
-            }
-        );
+        Route::group(['prefix' => 'admin'], function () {
+            Route::get('/movies', [AdminMovieController::class, 'index'])->name('admin.movies.index');
+            Route::get('/edit/movie/{movie}', [AdminMovieController::class, 'edit'])->name("movie.edit");
+            Route::patch('/edit/movie/{movie}', [AdminMovieController::class, 'update']);
+            Route::post("/movies/create", [AdminMovieController::class, 'store'])->name('movie.store');
+            Route::delete("/movies/{movie}", [AdminMovieController::class, 'destroy']);
+        });
     });
 });
 
