@@ -21,12 +21,4 @@ class UpdateMovieRequest extends FormRequest
             "name.ka" => "required"
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'name.en.required' => __('validation.en_movie_name_required'),
-            'name.ka.required' => __('validation.ka_movie_name_required')
-        ];
-    }
 }

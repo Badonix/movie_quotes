@@ -24,11 +24,7 @@ class UpdateQuoteRequest extends FormRequest
     public function messages()
     {
         return [
-            'body.en.required' => __('validation.en_quote_required'),
-            'body.ka.required' => __('validation.ka_quote_required'),
-            'image_url.required' => __('validation.image_required'),
-            'image_url.image' => __('validation.image_type'),
-            'movie_id.required' => __('validation.movie_required')
+            'image_url.image' => __('validation.image_type')
         ];
     }
 }
