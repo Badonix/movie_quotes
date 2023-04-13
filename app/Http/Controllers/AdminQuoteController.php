@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateQuoteRequest;
-use App\Http\Requests\UpdateQuoteRequest;
+use App\Http\Requests\Quotes\UpdateRequest;
+use App\Http\Requests\Quotes\CreateRequest;
 use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Http\RedirectResponse;
@@ -25,7 +25,7 @@ class AdminQuoteController extends Controller
         ]);
     }
 
-    public function store(CreateQuoteRequest $request): RedirectResponse
+    public function store(CreateRequest $request): RedirectResponse
     {
         $attributes = $request->validated();
         $attributes['user_id'] = auth()->user()->id;
@@ -49,7 +49,7 @@ class AdminQuoteController extends Controller
         ]);
     }
 
-    public function update(UpdateQuoteRequest $request, Quote $quote): RedirectResponse
+    public function update(UpdateRequest $request, Quote $quote): RedirectResponse
     {
         $attributes = $request->validated();
 
