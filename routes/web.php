@@ -37,10 +37,10 @@ Route::middleware('localization')->group(function () {
 
         Route::group(['prefix' => "admin"], function () {
             Route::view('/movies/create', 'admin.movies.create')->name('admin.movies.create');
-            Route::get('/quotes/create', [QuoteController::class, 'create'])->name('admin.quotes.create');
 
             Route::group(['controller' => AdminQuoteController::class, 'prefix'=>"quotes"], function () {
                 Route::get('/', 'index')->name('admin.quotes.index');
+                Route::get('/create', 'create')->name('admin.quotes.create');
                 Route::post('/create', 'store')->name('quote.store');
                 Route::get('/{quote}', 'edit')->name('quote.edit');
                 Route::patch('/{quote}', 'update')->name('quote.update');

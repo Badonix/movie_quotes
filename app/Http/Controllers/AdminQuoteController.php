@@ -16,6 +16,13 @@ class AdminQuoteController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('admin.quotes.create', [
+            'movies'=> Movie::latest()->get()
+        ]);
+    }
+
     public function store(CreateQuoteRequest $request)
     {
         $attributes = $request->validated();
