@@ -1,5 +1,5 @@
 @props(['name'])
-<section class='h-screen max-w-5xl mx-auto px-6 py-8'>
+<section class='h-screen max-w-7xl mx-auto px-6 py-8'>
     <h1 class='text-lg font-bold mb-8 pb-2 border-b text-white'>{{__('setting.' . $name)}}</h1>
     <div class='flex'>
         <aside class='w-48 flex-shrink-0'>
