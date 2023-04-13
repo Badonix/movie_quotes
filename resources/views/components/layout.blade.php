@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Quotes</title>
     <link rel="stylesheet" href="{{ asset('css/font.css') }}">
+    <link rel="icon" href="{{ url('/favicon.png') }}">
     @vite('resources/css/app.css')
 </head>
 <body>
