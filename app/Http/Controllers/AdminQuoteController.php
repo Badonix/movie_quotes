@@ -6,24 +6,26 @@ use App\Http\Requests\CreateQuoteRequest;
 use App\Http\Requests\UpdateQuoteRequest;
 use App\Models\Movie;
 use App\Models\Quote;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class AdminQuoteController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('admin.quotes.index', [
             'quotes' => Quote::latest()->get()
         ]);
     }
 
-    public function create()
+    public function create(): View
     {
         return view('admin.quotes.create', [
             'movies'=> Movie::latest()->get()
         ]);
     }
 
-    public function store(CreateQuoteRequest $request)
+    public function store(CreateQuoteRequest $request): RedirectResponse
     {
         $attributes = $request->validated();
         $attributes['user_id'] = auth()->user()->id;
@@ -33,13 +35,13 @@ class AdminQuoteController extends Controller
         return redirect('/');
     }
 
-    public function destroy(Quote $quote)
+    public function destroy(Quote $quote): RedirectResponse
     {
         $quote->delete();
         return back();
     }
 
-    public function edit(Quote $quote)
+    public function edit(Quote $quote): View
     {
         return view('admin.quotes.edit', [
             "quote" => $quote,
@@ -47,7 +49,7 @@ class AdminQuoteController extends Controller
         ]);
     }
 
-    public function update(UpdateQuoteRequest $request, Quote $quote)
+    public function update(UpdateQuoteRequest $request, Quote $quote): RedirectResponse
     {
         $attributes = $request->validated();
 
