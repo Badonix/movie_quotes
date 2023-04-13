@@ -39,27 +39,19 @@ Route::middleware('localization')->group(function () {
             Route::view('/movies/create', 'admin.movies.create')->name('admin.movies.create');
             Route::get('/quotes/create', [QuoteController::class, 'create'])->name('admin.quotes.create');
 
-            Route::group(['controller' => AdminQuoteController::class], function () {
-                Route::group(['prefix'=>"quotes"], function () {
-                    Route::get('/', 'index')->name('admin.quotes.index');
-                    Route::post('/create', 'store')->name('quote.store');
-                    Route::delete('/{quote}', 'destroy')->name('quote.destroy');
-                });
-                Route::group(['prefix'=>"quote"], function () {
-                    Route::get('/{quote}', 'edit')->name('quote.edit');
-                    Route::patch('/{quote}', 'update')->name('quote.update');
-                });
+            Route::group(['controller' => AdminQuoteController::class, 'prefix'=>"quotes"], function () {
+                Route::get('/', 'index')->name('admin.quotes.index');
+                Route::post('/create', 'store')->name('quote.store');
+                Route::get('/{quote}', 'edit')->name('quote.edit');
+                Route::patch('/{quote}', 'update')->name('quote.update');
+                Route::delete('/{quote}', 'destroy')->name('quote.destroy');
             });
-            Route::group(['controller'=>AdminMovieController::class], function () {
-                Route::group(['prefix'=>"movies"], function () {
-                    Route::get('/', 'index')->name('admin.movies.index');
-                    Route::post("/create", 'store')->name('movie.store');
-                    Route::delete("/{movie}", 'destroy')->name('movie.destroy');
-                });
-                Route::group(['prefix'=>"movie"], function () {
-                    Route::get('/{movie}', 'edit')->name("movie.edit");
-                    Route::patch('/{movie}', 'update')->name("movie.update");
-                });
+            Route::group(['controller'=>AdminMovieController::class, 'prefix'=>"movies"], function () {
+                Route::get('/', 'index')->name('admin.movies.index');
+                Route::post("/create", 'store')->name('movie.store');
+                Route::get('/{movie}', 'edit')->name("movie.edit");
+                Route::patch('/{movie}', 'update')->name("movie.update");
+                Route::delete("/{movie}", 'destroy')->name('movie.destroy');
             });
         });
     });
