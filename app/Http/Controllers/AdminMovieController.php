@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateMovieRequest;
-use App\Http\Requests\UpdateMovieRequest;
+use App\Http\Requests\Movies\CreateRequest;
+use App\Http\Requests\Movies\UpdateRequest;
 use App\Models\Movie;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class AdminMovieController extends Controller
 {
-    public function store(CreateMovieRequest $request): RedirectResponse
+    public function store(CreateRequest $request): RedirectResponse
     {
         $attributes = $request->validated();
         $attributes['user_id'] = auth()->user()->id;
@@ -40,7 +40,7 @@ class AdminMovieController extends Controller
         ]);
     }
 
-    public function update(Movie $movie, UpdateMovieRequest $request): RedirectResponse
+    public function update(Movie $movie, UpdateRequest $request): RedirectResponse
     {
         $attributes = $request->validated();
         $movie->update($attributes);

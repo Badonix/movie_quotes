@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Quotes;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateQuoteRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
