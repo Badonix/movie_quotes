@@ -1,6 +1,6 @@
 <x-layout>
   <x-setting name='new_quote'>
-    <form method="POST" action="/admin/quotes/create" enctype="multipart/form-data" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
+    <form method="POST" action="{{route('quote.store')}}" enctype="multipart/form-data" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
         @csrf
         <div>
           <x-input :value="old('body.en')" name='body[en]' form_name='quote_en'/>

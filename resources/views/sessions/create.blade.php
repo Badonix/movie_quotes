@@ -4,7 +4,7 @@
 <main class='h-screen w-full flex flex-col justify-center items-center px-10'>
     <div class='bg-neutral-400 rounded-xl p-12 w-full max-w-lg md:w-2/3 lg:w-1/2'>
         <h1 class='text-center font-bold text-2xl text-gray-700'>{{__('auth.login')}}</h1>
-        <form method='POST' action='/login' class='mt-5 flex flex-col'>
+        <form method='POST' action='{{route("login.store")}}' class='mt-5 flex flex-col'>
             @csrf 
             <x-input form_name='username' name='username'/>
             <x-input form_name='password' name='password' type='password'/>

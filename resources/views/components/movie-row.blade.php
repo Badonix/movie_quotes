@@ -3,8 +3,8 @@
     <p>{{$movie->id}}</p>
     <a href='{{ route("movie", $movie->id) }}'>{{ $movie->name }}</a>
     <div class='flex items-center gap-3'>
-        <a href='/admin/edit/movie/{{$movie->id}}'>{{__('setting.edit')}}</a>
-        <form action="/admin/movies/{{$movie->id}}" method="POST">
+        <a href='{{route("movie.edit", ["movie"=>$movie])}}'>{{__('setting.edit')}}</a>
+        <form action="{{route('movie.destroy', ['movie'=>$movie])}}" method="POST">
         @method("DELETE")
         @csrf
 

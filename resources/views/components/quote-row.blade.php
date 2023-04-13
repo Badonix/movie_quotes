@@ -8,8 +8,8 @@
         <a href='{{route("movie", $quote->movie->id)}}'>{{$quote->movie->name}}</a>
     </div>
     <div class='flex items-center gap-3'>
-        <a href='/admin/edit/quote/{{$quote->id}}'>{{__('setting.edit')}}</a>
-        <form action='/admin/quotes/{{$quote->id}}' method="POST">
+        <a href='{{route("quote.edit", ["quote"=>$quote])}}'>{{__('setting.edit')}}</a>
+        <form action='{{route("quote.destroy", ["quote"=>$quote])}}' method="POST">
             @csrf
             @method("DELETE")
             <button type='submit'>{{__('setting.delete')}}</button>

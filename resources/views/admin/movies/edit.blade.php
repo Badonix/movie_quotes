@@ -1,6 +1,6 @@
 <x-layout>
   <x-setting name='edit_movie'>
-    <form method="POST" action="/admin/edit/movie/{{$movie->id}}" enctype="multipart/form-data" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
+    <form method="POST" action="{{route('movie.update', ['movie'=>$movie])}}" enctype="multipart/form-data" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
         @csrf
         @method('PATCH')
         <div>

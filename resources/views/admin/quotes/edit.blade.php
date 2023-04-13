@@ -1,6 +1,6 @@
 <x-layout>
   <x-setting name='edit_quote'>
-    <form method="POST" action="/admin/edit/quote/{{$quote->id}}" enctype="multipart/form-data" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
+    <form method="POST" action="{{ route('quote.update', ['quote' => $quote]) }}" enctype="multipart/form-data" class='bg-white flex flex-col gap-5 rounded-xl px-5 py-3'>
         @csrf
         @method('PATCH')
         <div>
