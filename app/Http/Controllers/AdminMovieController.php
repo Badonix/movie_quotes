@@ -30,7 +30,7 @@ class AdminMovieController extends Controller
     public function destroy(Movie $movie): RedirectResponse
     {
         $movie->delete();
-        return redirect('/');
+        return back();
     }
 
     public function edit(Movie $movie): View
