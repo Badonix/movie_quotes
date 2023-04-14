@@ -11,5 +11,9 @@ return [
     'delete' => "Delete",
     "edit_quote"=>"Edit Quote",
     'edit' => "Edit",
-    'edit_movie' =>"Edit Movie"
+    'edit_movie' =>"Edit Movie",
+    'id' => "ID",
+    "quote" => "Quote",
+    "movie" => "Movie",
+    'actions' => "Actions"
 ];
