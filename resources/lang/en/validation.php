@@ -10,5 +10,7 @@ return [
         'body.en' =>"Quote in English",
         "body.ka" =>"Quote in Georgian",
         "image_url" => "Image",
+        'username' => "Username",
+        'password' => "Password"
     ],
 ];

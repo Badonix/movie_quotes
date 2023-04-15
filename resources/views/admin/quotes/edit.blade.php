@@ -4,17 +4,19 @@
         @csrf
         @method('PATCH')
         <div>
-          <x-input form_name='quote_en' name='body[en]' value="{{$quote->getTranslations('body')['en']}}"/>
-          @error('body.en')
-          <p class='text-red-400 text-sm'>{{$message}}</p>
-          @enderror
+          <x-input form_name='quote_en' name='body[en]' value="{{$quote->getTranslations('body')['en']}}">
+            @error('body.en')
+            <p class='text-red-400 text-xs absolute -bottom-3'>{{$message}}</p>
+            @enderror
+          </x-input>
         </div>
 
         <div>
-          <x-input form_name='quote_ka' name='body[ka]' value="{{$quote->getTranslations('body')['ka']}}"/>
-          @error('body.ka')
-          <p class='text-red-400 text-sm'>{{$message}}</p>
-          @enderror
+          <x-input form_name='quote_ka' name='body[ka]' value="{{$quote->getTranslations('body')['ka']}}">
+            @error('body.ka')
+            <p class='text-red-400 text-xs absolute -bottom-3'>{{$message}}</p>
+            @enderror
+          </x-input>
         </div>
         
         <div class='flex gap-2'>
