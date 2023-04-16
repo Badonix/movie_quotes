@@ -137,7 +137,7 @@ it will watch JS files and on change it'll rebuild them, so you don't have to ma
 To create user execute:
 
 ```sh
-php artisan user:create
+php artisan movie-quotes:user-create
 ```
 
 #
