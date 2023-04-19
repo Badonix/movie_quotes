@@ -1,6 +1,6 @@
 @if ($quote)
     <div class='flex flex-col min-h-screen justify-center py-20 items-center gap-3'>
-        <img src="{{ asset('/storage/' . $quote->image_url) }}" class='max-w-lg max-h-full h-72 xl:h-96 object-contain' />
+        <img src="{{ asset('/storage/' . $quote->image_url) }}" class='object-cover h-96 w-700' />
         <p class='text-white md:text-3xl lg:text-4xl mt-5 max-w-5xl text-center break-all'>
             "{{ $quote->getTranslation('body', app()->getLocale()) }}"</p>
         <a href="{{ route('movie', ['id' => $quote->movie->id]) }}"
