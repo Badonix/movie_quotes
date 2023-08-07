@@ -1,7 +1,6 @@
 <div style="display:flex; align-items: center">
   <h1 style="position:relative; top: -6px">Movie Quotes App</h1>
 </div>
-
 ---
 
 This **Movie Quotes** app is the best destination for movie enthusiasts and quote lovers. Discover a new randomly generated movie quote on our landing page with each refresh, and browse our collection of quotes for more inspiration and entertainment.
